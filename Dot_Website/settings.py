@@ -20,7 +20,7 @@ load_dotenv(encoding="utf-8")
 CHANNEL_SECRET = os.getenv('CHANNEL_SECRET')
 CHANNEL_ACCESS_TOKEN = os.getenv('CHANNEL_ACCESS_TOKEN')
 # SECURITY WARNING: keep the secret key used in production secret!
-LINE_BASE_URL = "https://5a8ff96f4253.ngrok-free.app"
+LINE_BASE_URL = "https://test-website-north.onrender.com"
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv('LINE_CHANNEL_ACCESS_TOKEN')
 LINE_CHANNEL_SECRET = os.getenv('LINE_CHANNEL_SECRET')
 
@@ -39,15 +39,19 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-%bvp7yd^&^5aktfosx-pekg5^e
 DEBUG = True
 # DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
+# 加入 .onrender.com 讓 Render 的預設網址能通過
 ALLOWED_HOSTS = ['*',
-                 '.ngrok-free.app',
-                 '.ngrok.io',
-                 '.railway.app',
-                 'DotWebsiteOfficial.pythonanywhere.com']
+                 '.onrender.com',
+                 'localhost',
+                 '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app',
-                        'https://DotWebsiteOfficial.pythonanywhere.com',
-                        'https://*.railway.app']
+# 必須包含你在 Render 上的實際網址
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.ngrok-free.app',
+    'https://*.onrender.com',  # 這一行是關鍵
+    'https://test-website-north.onrender.com' # 也可以填入你 Render 儀表板顯示的完整網址
+]
+
 
 # Application definition
 
